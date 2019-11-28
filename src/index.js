@@ -1,0 +1,12 @@
+import 'core-js';
+
+// bootstrap file, loading react app into browser
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {App} from './app/App';
+
+// put virtula dom into real dom
+// react will create object for App class, calls render method, take v.dom
+// then patch the real dom
+ReactDOM.render(<App />, 
+                document.getElementById('root'));
