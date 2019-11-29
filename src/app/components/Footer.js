@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {withRouter} from 'react-router-dom';
+import withStorage from './Storage';
+
 // FIXME: Nested children and array access for children
 // props.children works.
 
 // props destructured into year and title
 // content children avaiable as props.children
 // reac keyword children, an array
-const Footer = ({year, title, children}) => {
-    // let {year, title} = props
-    console.log('Footer called');
+const Footer = (props) => {
+    let {year, title, history, children} = props
+    console.log('Footer called', props);
     const result = false;
 
     return (
@@ -17,6 +20,9 @@ const Footer = ({year, title, children}) => {
             {children}
             <p id="copyrights">Copyrights@{year}, {title}</p>           
             <p >result is {result.toString()}</p>
+
+            <button onClick={ () =>  history.push("/cart")}>Cart page</button>
+
         </div>
     )
 }
@@ -33,4 +39,8 @@ Footer.propTypes = {
     year: PropTypes.number, //optional
 }
 
-export default Footer;
+// higher order component
+//const WrappedFooter = withRouter(Footer);
+// export default WrappedFooter;
+
+export default   withStorage(withRouter(Footer));

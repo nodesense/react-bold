@@ -6,6 +6,13 @@ import Footer from './components/Footer';
 import Counter from './components/Counter';
 import Cart from './components/Cart';
 import Contact from './components/Contact';
+import Home from './components/Home';
+import NotFound from './components/NotFound';
+
+import {BrowserRouter as Router,
+        Route, 
+        Switch,
+        Redirect} from 'react-router-dom';
 
 // class component
 // object, member functions, state
@@ -34,20 +41,20 @@ export class App extends React.Component {
     render() {
         console.log('App render');
          return (
+             <Router>
              <div >
                   <HeaderEx title="Product App" />
 
-                 <Contact />
+                <Switch>
+                    <Route path="/" component={Home}  exact />  
+                    <Route path="/cart" component={Cart} />
+                    <Route path="/counter" component={Counter} />
+                    <Route path="/contact" component={Contact} />
+                    
+                    {/* <Redirect from="/old-contact" to="/contact" /> */}
 
-                  <Cart />
-
-                  {/* { this.state.flag && 
-                      <Counter startValue={this.state.startValue} 
-                           reset={this.reset}
-                       />
-                }
-
-                  <button onClick={this.toggle}>Show/Hide</button> */}
+                    <Route path="*" component={NotFound} />
+                  </Switch>
 
                   <Footer title={"Product App"}
                           year={2018  + 1}  
@@ -61,6 +68,7 @@ export class App extends React.Component {
                    
                   </Footer>
              </div>
+             </Router>
          );
     }
 }
