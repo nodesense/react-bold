@@ -1,3 +1,12 @@
+To Clone
+
+ > git clone https://github.com/nodesense/react-bold
+
+ > cd react-bold
+
+ > npm install
+
+ > npm start
 
 
 workshop code [day 1]
