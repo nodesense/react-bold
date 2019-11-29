@@ -1,8 +1,11 @@
 import React from 'react';
+ 
 
 // first argument always props for functional comp
 // props are immutable
 function Header(props) {
+
+    
     console.log('Header called');
     // WRONG
     // props.title = 'react';

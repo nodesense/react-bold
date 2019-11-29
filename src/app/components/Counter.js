@@ -30,6 +30,21 @@ class Counter extends Component {
         this.forceUpdate() ; // not recommended
     }
 
+    componentDidMount() {
+        console.log('Counter did mount')
+
+        this.handle = setInterval(() => {
+            console.log('timer running', this.state.counter)
+            this.decrement();
+        }, 5000)
+    }
+
+    componentWillUnmount() {
+        console.log('Counter will unmount');
+        clearInterval(this.handle);
+    }
+
+
     //ES6, without bind
     decrement() {
         //GOOD

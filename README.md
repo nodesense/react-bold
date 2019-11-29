@@ -1,3 +1,26 @@
+
+
+workshop code [day 1]
+https://github.com/nodesense/react-bold
+
+
+
+Lifecycle Starter code [Day 2] on same project
+
+https://bit.ly/34rvkh8
+
+Create below files inside components folder
+ Cart.js
+ CartItem.js
+ CartList.js
+ CartSummary.js
+
+create a file
+ src/index.css
+
+ Copy the content from gist
+ 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

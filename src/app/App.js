@@ -4,6 +4,7 @@ import React from 'react';
 import HeaderEx from './components/Header';
 import Footer from './components/Footer';
 import Counter from './components/Counter';
+import Cart from './components/Cart';
 
 // class component
 // object, member functions, state
@@ -11,7 +12,8 @@ export class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            startValue: 1000
+            startValue: 1000,
+            flag: true
         }
     }
 
@@ -22,6 +24,10 @@ export class App extends React.Component {
         })
     }
 
+
+    toggle = () => {
+        this.setState({flag: !this.state.flag})
+    }
     // react keyword
     // create virtuald and return virtual dom whenever it has been called
     render() {
@@ -30,9 +36,16 @@ export class App extends React.Component {
              <div >
                   <HeaderEx title="Product App" />
 
-                  <Counter startValue={this.state.startValue} 
+
+                  <Cart />
+
+                  { this.state.flag && 
+                      <Counter startValue={this.state.startValue} 
                            reset={this.reset}
-                  />
+                       />
+                }
+
+                  <button onClick={this.toggle}>Show/Hide</button>
 
                   <Footer title={"Product App"}
                           year={2018  + 1}  
