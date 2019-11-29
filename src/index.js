@@ -8,6 +8,8 @@ import {App} from './app/App';
 //webpack, pick this css and make a seperate file
 import "./index.css";
 
+import store from './app/store';
+
 // put virtula dom into real dom
 // react will create object for App class, calls render method, take v.dom
 // then patch the real dom

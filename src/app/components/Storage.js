@@ -9,8 +9,8 @@ class Storage extends React.Component {
          const Component = this.props.component;
 
          const storage = {
-             setItem: localStorage.setItem,
-             removeItem: localStorage.removeItem
+             setItem: window.localStorage.setItem,
+             removeItem: window.localStorage.removeItem
          }
 
          return (
@@ -22,11 +22,11 @@ class Storage extends React.Component {
 }
 
 function withStorage(componentClass) {
-    return function(props) {
+    return function component(props) {
         return (
             <Storage component={componentClass} {...props} />
         )
     }
-}
+} 
 
 export default withStorage;
