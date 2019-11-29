@@ -5,6 +5,7 @@ import HeaderEx from './components/Header';
 import Footer from './components/Footer';
 import Counter from './components/Counter';
 import Cart from './components/Cart';
+import Contact from './components/Contact';
 
 // class component
 // object, member functions, state
@@ -36,16 +37,17 @@ export class App extends React.Component {
              <div >
                   <HeaderEx title="Product App" />
 
+                 <Contact />
 
                   <Cart />
 
-                  { this.state.flag && 
+                  {/* { this.state.flag && 
                       <Counter startValue={this.state.startValue} 
                            reset={this.reset}
                        />
                 }
 
-                  <button onClick={this.toggle}>Show/Hide</button>
+                  <button onClick={this.toggle}>Show/Hide</button> */}
 
                   <Footer title={"Product App"}
                           year={2018  + 1}  

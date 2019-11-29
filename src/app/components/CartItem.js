@@ -1,8 +1,8 @@
 // CartItem.js
-import React, {Component} from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
-class CartItem extends Component {
+class CartItem extends PureComponent {
     constructor(props) {
         super(props);
     }
@@ -13,6 +13,10 @@ class CartItem extends Component {
    
     componentWillUnmount() {
         console.log('CartItem componentWillUnmount', this.props.item)
+    }
+
+    removeItem = (e) => {
+         this.props.removeItem(this.props.item.id) 
     }
 
     render() {
@@ -34,7 +38,7 @@ class CartItem extends Component {
                 <button onClick={ () => {} }>
                         -1
                 </button>    
-                <button onClick={ () => this.props.removeItem(item.id) }>
+                <button onClick={this.removeItem}>
                         X
                 </button>
                 </td>

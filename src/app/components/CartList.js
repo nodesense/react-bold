@@ -13,6 +13,17 @@ import CartItem from "./CartItem";
     }
      
     //TODO: shouldComponentUpdate
+    // called before calling render on update cycle
+    // this.forceUpdate shall not call shouldComponentUpdate
+    // this.setState shall go through  shouldComponentUpdate 
+    shouldComponentUpdate(prevProps, prevState) {
+        if (prevProps.items !== this.props.items) {
+            return true;
+        }
+        return false;
+        // return true; // render shall be called
+        // false, no render call
+    }
     
     render() {
         console.log("CartList Render");

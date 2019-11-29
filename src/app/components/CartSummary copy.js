@@ -18,37 +18,19 @@ import PropTypes from "prop-types";
             grandTotal: 0
         }
     }
-
-    // implement getDerivedStateFromProps here
-    static getDerivedStateFromProps(props, state) {
-        let discount = 0;
-
-        if (props.count >= 10) {
-            discount = 20;
-        } else if (props.count >= 5) {
-            discount = 10;
-        }
-
-        let grandTotal = props.amount - (props.amount * discount / 100);
-
-        return {
-            discount,
-            grandTotal
-        }
-    }
  
     //TODO: componentWillMount
     // during creation time, only once
-    // UNSAFE_componentWillMount() {
-    //     this.recalculate(this.props);
-    // }
+    UNSAFE_componentWillMount() {
+        this.recalculate(this.props);
+    }
 
     //TODO: componentWillReceiveProps, recalculate 
     // whenever parent render called on update cycle, called many times
-    // UNSAFE_componentWillReceiveProps(nextProps) {
-    //     console.log('cart summary will receive props', this.props, nextProps);
-    //     this.recalculate(nextProps);
-    // }
+    UNSAFE_componentWillReceiveProps(nextProps) {
+        console.log('cart summary will receive props', this.props, nextProps);
+        this.recalculate(nextProps);
+    }
  
     //TODO: shouldComponentUpdate
     // not scalblae code

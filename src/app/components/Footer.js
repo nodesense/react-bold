@@ -15,8 +15,8 @@ const Footer = ({year, title, children}) => {
         <div>
             <hr />
             {children}
-            <p>Copyrights@{year}, {title}</p>           
-            <p>result is {result.toString()}</p>
+            <p id="copyrights">Copyrights@{year}, {title}</p>           
+            <p >result is {result.toString()}</p>
         </div>
     )
 }

@@ -27,23 +27,6 @@ class Cart extends Component {
             flag: true
         }
     }
-
-    // before render function call on creation, update life cycle
-    static getDerivedStateFromProps(props, state) {
-        let count = 0, 
-        amount = 0;
-        console.log('recalculating total in derived state')
-        //calculation,
-        for (let item of state.items) {
-            amount += item.price * item.qty;
-            count += item.qty;
-        }
-
-        return { // new derived state
-            amount,
-            count
-        }
-    }
     
     addItem = () => {
         let id = Math.ceil(Math.random() * 10000);
@@ -57,9 +40,20 @@ class Cart extends Component {
         //TODO:
         this.setState( (state) => {
             const items = [...state.items, item];
-            
+           // this.recalculate(items);
+           let count = 0, 
+           amount = 0;
+
+           for (let item of items) {
+               amount += item.price * item.qty;
+               count += item.qty;
+           }
+           
+
             return {
-                items
+                items,
+                amount, 
+                count
             }
         })
     }
@@ -69,10 +63,19 @@ class Cart extends Component {
         console.log('removeItem ', id);
         this.setState( (state) => {
             const items = state.items.filter( item => item.id !== id);
-             
+            // this.recalculate(items); //TODO:
+            let count = 0, 
+            amount = 0;
+
+            for (let item of items) {
+                amount += item.price * item.qty;
+                count += item.qty;
+            }
             
             return {
-                items
+                items,
+                amount, 
+                count
             }
         })
     }
@@ -118,10 +121,10 @@ class Cart extends Component {
 
     //TODO:
     //componentWillMount
-    // UNSAFE_componentWillMount() {
-    //     console.log('Cart componentWillMount');
-    //     this.recalculate(this.state.items);
-    // }
+    UNSAFE_componentWillMount() {
+        console.log('Cart componentWillMount');
+        this.recalculate(this.state.items);
+    }
     
     
     render() {
