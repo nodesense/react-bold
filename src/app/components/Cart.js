@@ -19,7 +19,7 @@ class Cart extends Component {
         super(props);
 
         const items = [];
-        for (let i =0; i < 5000; i ++) {
+        for (let i =0; i < 5; i ++) {
             let id = Math.ceil(Math.random() * 1000000);
             let item = {
                 id,

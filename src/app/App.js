@@ -23,6 +23,7 @@ import {BrowserRouter as Router,
         Switch,
         Redirect} from 'react-router-dom';
 
+import PrivateRoute from './components/PrivateRoute';
 
 function Loading() {
     return (
@@ -81,9 +82,9 @@ export class App extends React.Component {
 
                 <Switch>
                     <Route path="/" component={Home}  exact />  
-                    <Route path="/cart" component={Cart} />
-                    <Route path="/counter" component={Counter} />
-                    <Route path="/contact" component={Contact} />
+                    <PrivateRoute path="/cart" component={Cart} />
+                    <PrivateRoute path="/counter" component={Counter} />
+                    <PrivateRoute path="/contact" component={Contact} />
                     <Route path="/redux-counter" component={ReduxCounter} />
                     
                     <Route path="/redux-cart" component={LoadableCart} />

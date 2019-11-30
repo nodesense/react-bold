@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink, Link} from 'react-router-dom'; 
 import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 // first argument always props for functional comp
 // props are immutable
@@ -33,6 +34,8 @@ function Header(props) {
             
             
             <Link to="/login" > Login </Link>
+
+        {props.authenticated && <button onClick={props.logout}>Logout</button> }
             <hr />
         </div>
     )
@@ -40,4 +43,19 @@ function Header(props) {
 
 // instrument the Header component
 
-export default Header;
+
+function mapStateToProps (state) {
+    return {
+        authenticated: state.auth.authenticated
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        logout: () => {
+            dispatch({type: 'LOGGED_OUT'});
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Header);
