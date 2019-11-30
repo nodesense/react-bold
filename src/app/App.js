@@ -10,6 +10,8 @@ import Home from './components/Home';
 import NotFound from './components/NotFound';
 
 import ReduxCounter from './counter/containers/ReduxCounter';
+import ReduxCart from './cart/containers/Cart';
+
 
 
 import {BrowserRouter as Router,
@@ -55,6 +57,7 @@ export class App extends React.Component {
                     <Route path="/contact" component={Contact} />
                     <Route path="/redux-counter" component={ReduxCounter} />
                     
+                    <Route path="/redux-cart" component={ReduxCart} />
                     {/* <Redirect from="/old-contact" to="/contact" /> */}
 
                     <Route path="*" component={NotFound} />

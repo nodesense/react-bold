@@ -8,6 +8,8 @@ import thunk from 'redux-thunk';
 
 import {counterReducer} from './counter/state/reducers/counterReducer';
 
+import cartReducer from './cart/state/cartReducer';
+
 
 //middlewares.js
 
@@ -49,7 +51,7 @@ console.log('creating store now');
 const rootReducer = combineReducers({
     // stateName: reducer function
     counter: counterReducer,
-    //cart: cartReducer,
+    items: cartReducer,
     //...
 });
 
