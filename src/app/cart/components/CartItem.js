@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 
+// inside cart/components/CartItem.js
+import ThemeContext from '../../components/ThemeContext';
 
 
 export default class CartItem extends Component {
@@ -50,7 +52,13 @@ export default class CartItem extends Component {
             <tr>
                 <td>{item.name}</td>
                 <td>
-                   {item.price}
+                   {/* in the place of price */}
+                   <ThemeContext.Consumer> 
+                        { (color) => (
+                            <span style={ {color: color} }>{item.price}</span>
+                        )}
+                    </ThemeContext.Consumer>
+
                    <p ref="discount"> </p>
                 </td>
                 <td>

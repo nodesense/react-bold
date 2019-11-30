@@ -48,10 +48,27 @@ export const cacheMiddleware = ({getState, dispatch}) => next => action => {
 console.log('creating store now');
 // createStore internally dispatch action to initialize store 
 
+//authReducer.js
+const INITIAL_AUTH_STATE = {
+    authenticated: false
+}
+
+function authReducer(state = INITIAL_AUTH_STATE, action) {
+    switch(action.type) {
+        case "LOGGED_IN": 
+            return Object.assign({}, state, {authenticated: true})
+        case  "LOGGED_OUT":
+                        return Object.assign({}, state, {authenticated: false});
+        default:
+            return state;
+    }
+}
+
 const rootReducer = combineReducers({
     // stateName: reducer function
     counter: counterReducer,
     items: cartReducer,
+    auth: authReducer
     //...
 });
 

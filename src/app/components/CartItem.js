@@ -2,10 +2,16 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
+// app/components/CartItem.js
+import ThemeContext from './ThemeContext';
+
 class CartItem extends PureComponent {
     constructor(props) {
         super(props);
     }
+
+    // this enable this.context attributes, that value 
+    static contextType = ThemeContext;
 
     //TODO: Ref
     //TODO: componentWillMount
@@ -27,7 +33,9 @@ class CartItem extends PureComponent {
         return (
             <tr>
                 <td>{item.name} </td>
-                <td>{item.price}</td>
+                <td>
+                   <span style={ {color: this.context}}>{item.price}</span>
+                </td>
                 <td>{item.qty}</td>
                 <td>{item.price * item.qty}</td>
                 <td> 

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import withStorage from './Storage';
 
+import ThemeContext from './ThemeContext';
+
 // FIXME: Nested children and array access for children
 // props.children works.
 
@@ -23,6 +25,11 @@ const Footer = (props) => {
 
             <button onClick={ () =>  history.push("/cart")}>Cart page</button>
 
+            <ThemeContext.Consumer> 
+                { (color) => (
+                    <span style={ {color: color} }>The Theme Color {color}</span>
+                )}
+            </ThemeContext.Consumer>
         </div>
     )
 }
@@ -39,6 +46,8 @@ Footer.propTypes = {
     year: PropTypes.number, //optional
 }
 
+
+// Footer.contextType = ThemeContext;
 // higher order component
 //const WrappedFooter = withRouter(Footer);
 // export default WrappedFooter;

@@ -1,13 +1,13 @@
 // CartList.js
 
-import React, {Component} from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
 import CartItem from "./CartItem";
 
  //TODO: PureComponent
 
- class CartList extends Component {
+ class CartList extends PureComponent {
     constructor(props) {
         super(props);
     }
@@ -16,14 +16,14 @@ import CartItem from "./CartItem";
     // called before calling render on update cycle
     // this.forceUpdate shall not call shouldComponentUpdate
     // this.setState shall go through  shouldComponentUpdate 
-    shouldComponentUpdate(prevProps, prevState) {
-        if (prevProps.items !== this.props.items) {
-            return true;
-        }
-        return false;
-        // return true; // render shall be called
-        // false, no render call
-    }
+    // shouldComponentUpdate(prevProps, prevState) {
+    //     if (prevProps.items !== this.props.items) {
+    //         return true;
+    //     }
+    //     return false;
+    //     // return true; // render shall be called
+    //     // false, no render call
+    // }
     
     render() {
         console.log("CartList Render");

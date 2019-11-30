@@ -18,10 +18,19 @@ class Cart extends Component {
     constructor(props) {
         super(props);
 
+        const items = [];
+        for (let i =0; i < 5000; i ++) {
+            let id = Math.ceil(Math.random() * 1000000);
+            let item = {
+                id,
+                name: `Product ${id}`,
+                price: Math.ceil(Math.random() * 100),
+                qty: 1
+            }
+            items.push(item)
+        }
         this.state = {
-            items: [ 
-            			{id: 1, name: 'P1', price: 100, qty: 5}
-            	   ],
+            items: items,
             amount: 0, // sum of all items price * qty
             count: 0, // sum of all items qty
             flag: true
@@ -144,7 +153,7 @@ class Cart extends Component {
             </button>
             
             <CartList  items={this.state.items}  
-                       removeItem={this.removeItem}
+                       removeItem={ this.removeItem}
             />
 
             <CartSummary amount={this.state.amount}

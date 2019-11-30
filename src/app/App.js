@@ -8,16 +8,36 @@ import Cart from './components/Cart';
 import Contact from './components/Contact';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
+import Login from './components/Login';
 
 import ReduxCounter from './counter/containers/ReduxCounter';
-import ReduxCart from './cart/containers/Cart';
+// import ReduxCart from './cart/containers/Cart';
 
+// for code splitting and lazy loading
+import Loadable from 'react-loadable';
 
+import ThemeContext from './components/ThemeContext';
 
 import {BrowserRouter as Router,
         Route, 
         Switch,
         Redirect} from 'react-router-dom';
+
+
+function Loading() {
+    return (
+        <h2>Loading component....</h2>
+    )
+}
+        
+// Component
+const LoadableCart = Loadable({
+    // split the bundle, load the bundle dynamically [webpack]
+    loader: () => import('./cart/containers/Cart'),
+    // place holder comp to show loading status
+    loading: Loading
+})
+
 
 // class component
 // object, member functions, state
@@ -26,7 +46,8 @@ export class App extends React.Component {
         super(props);
         this.state = {
             startValue: 1000,
-            flag: true
+            flag: true,
+            theme: 'red'
         }
     }
 
@@ -37,6 +58,11 @@ export class App extends React.Component {
         })
     }
 
+    changeBlue = () => {
+        this.setState({
+            theme: 'blue'
+        })
+    }
 
     toggle = () => {
         this.setState({flag: !this.state.flag})
@@ -47,7 +73,10 @@ export class App extends React.Component {
         console.log('App render');
          return (
              <Router>
+                 <ThemeContext.Provider value={this.state.theme} >
              <div >
+                 <button onClick={this.changeBlue}>Blue</button>
+
                   <HeaderEx title="Product App" />
 
                 <Switch>
@@ -57,7 +86,9 @@ export class App extends React.Component {
                     <Route path="/contact" component={Contact} />
                     <Route path="/redux-counter" component={ReduxCounter} />
                     
-                    <Route path="/redux-cart" component={ReduxCart} />
+                    <Route path="/redux-cart" component={LoadableCart} />
+                    <Route path="/login" component={Login} />
+                    
                     {/* <Redirect from="/old-contact" to="/contact" /> */}
 
                     <Route path="*" component={NotFound} />
@@ -75,6 +106,7 @@ export class App extends React.Component {
                    
                   </Footer>
              </div>
+             </ThemeContext.Provider>
              </Router>
          );
     }

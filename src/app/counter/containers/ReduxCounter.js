@@ -12,7 +12,7 @@ import * as actions from '../state/actions';
 // very first time, when component instance created
 // after every dispatch, [container always subscribe from store]
 export function mapStateToProps(state) {
-    console.trace()
+     
     console.log('Counter mapStateToProps', state)
     return {
         //propName: value from state
